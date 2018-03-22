@@ -1,17 +1,19 @@
-FROM mhart/alpine-node:8
+FROM mhart/alpine-node:9
 
 MAINTAINER Codaisseur <oss@codaisseur.com>
 
 RUN apk --no-cache update && \
     apk --no-cache add python postgresql-dev py-pip py-setuptools ca-certificates curl groff less bash build-base && \
+    pip --no-cache-dir install --upgrade pip && \
     pip --no-cache-dir install awscli && \
     rm -rf /var/cache/apk/*
 
-RUN yarn global add typescript @google-cloud/logging-winston
+# Install gyp packages
+RUN yarn global add typescript grpc bcrypt
 
 WORKDIR /app
 
-ONBUILD ADD . /app
+
 
 ENTRYPOINT "/bin/bash"
 
