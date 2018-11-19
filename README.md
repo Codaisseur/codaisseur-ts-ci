@@ -4,7 +4,8 @@
 
 Features:
 
-  - Node (8.x)
+  - Node (11.x)
+  - TypeScript
   - Yarn
   - AWS CLI
 
